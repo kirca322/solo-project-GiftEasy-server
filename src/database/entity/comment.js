@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       thumb: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        defaultValue: 0,
       },
       isDeleted: {
         type: DataTypes.BOOLEAN,
@@ -26,6 +27,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       timestamps: true,
+      charset: "utf8",
+      collate: "utf8_general_ci",
     }
   );
 };

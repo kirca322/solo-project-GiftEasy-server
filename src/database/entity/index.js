@@ -16,8 +16,8 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 db.User = require("./user")(sequelize, Sequelize);
-db.User = require("./gift")(sequelize, Sequelize);
-db.User = require("./comment")(sequelize, Sequelize);
-db.User = require("./userThumb")(sequelize, Sequelize);
+db.Gift = require("./gift")(sequelize, Sequelize);
+db.Comment = require("./comment")(sequelize, Sequelize);
+db.UserThumb = require("./userThumb")(sequelize, Sequelize);
 
 module.exports = db;

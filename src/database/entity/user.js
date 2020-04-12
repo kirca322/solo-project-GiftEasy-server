@@ -3,24 +3,22 @@ module.exports = (sequelize, DataTypes) => {
     "user",
     {
       name: {
-        type: DataTypes.STRING(20),
-        allowNull: false,
-      },
-      mobile: {
-        type: DataTypes.STRING(20),
+        type: DataTypes.STRING(255),
         allowNull: false,
       },
       email: {
-        type: DataTypes.STRING(50),
+        type: DataTypes.STRING(255),
         allowNull: false,
       },
-      password: {
-        type: DataTypes.STRING(200),
+      googleId: {
+        type: DataTypes.STRING(255),
         allowNull: false,
       },
     },
     {
       timestamps: true,
+      charset: "utf8",
+      collate: "utf8_general_ci",
     }
   );
 };
