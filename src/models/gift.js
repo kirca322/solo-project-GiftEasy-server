@@ -25,4 +25,12 @@ module.exports = class GiftModel {
       },
     });
   }
+
+  async findOneWithGiftId(giftId) {
+    return await Gift.findOne({
+      where: {
+        id: giftId,
+      },
+    });
+  }
 };

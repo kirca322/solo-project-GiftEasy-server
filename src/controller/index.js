@@ -35,11 +35,46 @@ module.exports = class Controller {
 
   async getGiftEntryController(req, res) {
     // 해야됨
+    const userId = req.tokenData.id;
     const result = await service.getGiftEntryService(req.params.giftId, userId);
     res.status(200).json(result);
   }
 
-  async getThumbsListController(req, res) {
-    res.status(200).end();
+  // async getThumbsListController(req, res) {
+  //   res.status(200).end();
+  // }
+
+  async addCommentController(req, res) {
+    const userId = req.tokenData.id;
+    const result = await service.addCommentService(userId, req.body);
+    res.status(201).json(result);
+  }
+
+  async deleteCommentController(req, res) {
+    const userId = req.tokenData.id;
+    const commentId = req.params.commentId;
+    const giftId = req.params.giftId;
+    const result = await service.deleteCommentService(
+      userId,
+      commentId,
+      giftId
+    );
+    res.status(200).json(result);
+  }
+
+  async thumbUpController(req, res) {
+    const commentId = req.params.commentId;
+    const giftId = req.params.giftId;
+    const userId = req.tokenData.id;
+    const result = await service.thumbUpService(commentId, userId, giftId);
+    res.status(201).json(result);
+  }
+
+  async thumbDownController(req, res) {
+    const commentId = req.params.commentId;
+    const giftId = req.params.giftId;
+    const userId = req.tokenData.id;
+    const result = await service.thumbDownService(commentId, userId, giftId);
+    res.status(201).json(result);
   }
 };

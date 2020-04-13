@@ -16,4 +16,16 @@ module.exports = class UserModel {
       console.log(err);
     }
   }
+
+  async findOne(userId) {
+    return await User.findOne({
+      where: {
+        id: userId,
+      },
+    });
+  }
+
+  async findAll() {
+    return await User.findAll();
+  }
 };
