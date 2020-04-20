@@ -83,6 +83,11 @@ module.exports = class Service {
     const email = payload["email"];
     const name = payload["name"];
     const result = await userModel.findOrCreate(googleId, email, name);
+    if (result[1]) {
+      result[0].dataValues.isFirst = true;
+    } else {
+      result[0].dataValues.isFirst = false;
+    }
     return result[0].dataValues;
   }
 

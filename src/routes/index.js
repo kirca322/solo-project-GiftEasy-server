@@ -6,6 +6,7 @@ const Controller = require("../controller");
 
 const jwtCheck = jwtMiddleware(process.env.JWT_SECRET_KEY);
 const controller = new Controller();
+
 router.post("/signin", controller.signinController);
 
 router.post("/survey", jwtCheck, controller.addSurveyController);
@@ -17,8 +18,6 @@ router.get(
 );
 
 router.get("/gift/:giftId", jwtCheck, controller.getGiftEntryController);
-
-// router.get("/user/thumbs/list/:giftId", jwtCheck, controller.getThumbsListController);
 
 router.post("/comment", jwtCheck, controller.addCommentController);
 

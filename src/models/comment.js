@@ -1,10 +1,6 @@
 const { Comment } = require("../database/entity");
 
 module.exports = class CommentModel {
-  async findOrCreate() {
-    await Comment.findOrCreate();
-  }
-
   async create(userId, commentData) {
     await Comment.create({
       giftId: commentData.giftId,

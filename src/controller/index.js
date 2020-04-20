@@ -23,7 +23,9 @@ module.exports = class Controller {
         expiresIn: "6h",
       }
     );
-    res.status(200).json({ id: userInfo.id, token: token });
+    res
+      .status(200)
+      .json({ id: userInfo.id, token: token, isFirst: userInfo.isFirst });
   }
 
   async getGiftListController(req, res) {
@@ -34,15 +36,10 @@ module.exports = class Controller {
   }
 
   async getGiftEntryController(req, res) {
-    // 해야됨
     const userId = req.tokenData.id;
     const result = await service.getGiftEntryService(req.params.giftId, userId);
     res.status(200).json(result);
   }
-
-  // async getThumbsListController(req, res) {
-  //   res.status(200).end();
-  // }
 
   async addCommentController(req, res) {
     const userId = req.tokenData.id;

@@ -2,22 +2,18 @@ const { User } = require("../database/entity");
 
 module.exports = class UserModel {
   async findOrCreate(googleId, email, name) {
-    try {
-      return await User.findOrCreate({
-        where: {
-          googleId: googleId,
-          email: email,
-        },
-        defaults: {
-          name: name,
-        },
-      });
-    } catch (err) {
-      console.log(err);
-    }
+    return await User.findOrCreate({
+      where: {
+        googleId: googleId,
+        email: email,
+      },
+      defaults: {
+        name: name,
+      },
+    });
   }
 
-  async findOne(userId) {
+  async findOneWithUserId(userId) {
     return await User.findOne({
       where: {
         id: userId,
